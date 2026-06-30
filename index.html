@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Public Library Management System</h1>
+  </header>
+
+  <main class="app-main">
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Search by author..." aria-label="Search by author" />
+      <select id="filter-category" aria-label="Filter by category">
+        <option value="all">All categories</option>
+        <option value="software">Software</option>
+        <option value="javascript">JavaScript</option>
+      </select>
+    </section>
+
+    <section id="book-catalogue" class="book-catalogue" aria-label="Book catalogue"></section>
+
+    <section class="borrow-section">
+      <h2>Borrow a Book</h2>
+      <form id="borrow-form">
+        <label for="memberId">Member ID</label>
+        <input type="text" id="memberId" name="memberId" required />
+
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" name="isbn" required />
+
+        <button type="submit">Borrow</button>
+      </form>
+    </section>
+
+    <section id="stats-dashboard" class="stats-dashboard" aria-label="Library statistics"></section>
+
+    <section class="members-section">
+      <h2>Members</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>ID</th><th>Books Out</th><th></th></tr>
+        </thead>
+        <tbody id="member-table-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="src/ui.js"></script>
+</body>
+</html>

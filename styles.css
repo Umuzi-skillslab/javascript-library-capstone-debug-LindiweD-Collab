@@ -1,0 +1,101 @@
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent: #2e8b57;
+  --color-bg: #f7f8fa;
+  --color-card: #ffffff;
+  --color-text: #1c1c1c;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.app-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1.25rem 2rem;
+}
+
+.app-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls input,
+.controls select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.book-catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.book-card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.book-card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.book-author { color: #555; margin: 0 0 0.5rem; }
+.book-availability { font-size: 0.85rem; color: #777; }
+
+.borrow-btn {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.borrow-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.borrow-section form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  max-width: 400px;
+}
+
+.stats-dashboard {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e2e2e2;
+}
