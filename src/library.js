@@ -1,11 +1,4 @@
-/**
- * src/library.js
- *
- * Core domain logic for the library management system: book/member
- * classes, the Library aggregate that manages them, and LibraryStats
- * for reporting. No DOM code lives here — this module is pure logic
- * and is fully unit-testable in isolation (see tests/library.test.js).
- */
+
 
 // ── Constants ────────────────────────────────────────────────────────────
 export const MAX_BOOKS_PER_MEMBER = 5;
@@ -138,10 +131,7 @@ export class PremiumMember extends Member {
 
 // ── Recursive functions (2, both with explicit base cases) ─────────────
 
-/**
- * Recursively search an array of books for a matching ISBN. Demonstrates
- * a classic linear recursive search with an index accumulator.
- */
+
 export function findBookRecursive(books, isbn, index = 0) {
   if (!Array.isArray(books)) {
     throw new TypeError('books must be an array');
@@ -155,10 +145,7 @@ export function findBookRecursive(books, isbn, index = 0) {
   return findBookRecursive(books, isbn, index + 1);
 }
 
-/**
- * Recursively sum an array of late fees. Demonstrates array
- * destructuring + rest inside a recursive function.
- */
+
 export function sumFeesRecursive(fees) {
   if (!Array.isArray(fees) || fees.length === 0) {
     return 0; // base case: empty array
@@ -184,9 +171,7 @@ export class Library {
     return book;
   }
 
-  /**
-   * Add several books at once. Rest-parameter example.
-   */
+  
   addMultipleBooks(...booksToAdd) {
     for (const book of booksToAdd) {
       this.addBook(book);
@@ -248,10 +233,7 @@ export class Library {
     return this.books.every(book => book.isAvailable());
   }
 
-  /**
-   * Merge this library's books with one or more external collections.
-   * Spread operator example — returns a new array, doesn't mutate.
-   */
+  
   combineBookCollections(...collections) {
     return [...this.books, ...collections.flat()];
   }
