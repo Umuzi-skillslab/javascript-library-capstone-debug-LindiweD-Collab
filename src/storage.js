@@ -1,11 +1,4 @@
-/**
- * src/storage.js
- *
- * All localStorage / JSON persistence lives here, isolated from both
- * the domain logic (library.js) and the DOM layer (ui.js). Every
- * operation is wrapped in try-catch since localStorage and JSON.parse
- * can both throw (quota exceeded, private browsing, malformed data).
- */
+
 
 const STORAGE_KEY = 'techbridge_library_data';
 
