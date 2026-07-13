@@ -1,12 +1,8 @@
-
-
-// ── Constants ────────────────────────────────────────────────────────────
 export const MAX_BOOKS_PER_MEMBER = 5;
 export const PREMIUM_MAX_BOOKS_PER_MEMBER = 10;
 const DAILY_LATE_FEE_RANDS = 2;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-// ── Validation helpers (used across constructors/methods) ──────────────
 function assertNonEmptyString(value, fieldName) {
   if (typeof value !== 'string' || value.trim().length === 0) {
     throw new TypeError(`${fieldName} must be a non-empty string`);
@@ -60,11 +56,9 @@ export class Book {
   }
 }
 
-// ── DigitalBook (inheritance chain #1) ──────────────────────────────────
 export class DigitalBook extends Book {
   constructor(isbn, title, author, category, fileFormat = 'EPUB') {
-    // Digital books are never "out of stock" — model that as Infinity
-    // copies rather than special-casing availability everywhere else.
+  
     super(isbn, title, author, category, Infinity);
     assertNonEmptyString(fileFormat, 'fileFormat');
     this.fileFormat = fileFormat;
@@ -116,7 +110,6 @@ export class Member {
   }
 }
 
-// ── PremiumMember (inheritance chain #2) ────────────────────────────────
 export class PremiumMember extends Member {
   constructor(id, name, email) {
     super(id, name, email);
@@ -129,18 +122,16 @@ export class PremiumMember extends Member {
   }
 }
 
-// ── Recursive functions (2, both with explicit base cases) ─────────────
-
 
 export function findBookRecursive(books, isbn, index = 0) {
   if (!Array.isArray(books)) {
     throw new TypeError('books must be an array');
   }
   if (index >= books.length) {
-    return undefined; // base case: exhausted the array
+    return undefined; 
   }
   if (books[index].isbn === isbn) {
-    return books[index]; // base case: found it
+    return books[index]; 
   }
   return findBookRecursive(books, isbn, index + 1);
 }
@@ -148,7 +139,7 @@ export function findBookRecursive(books, isbn, index = 0) {
 
 export function sumFeesRecursive(fees) {
   if (!Array.isArray(fees) || fees.length === 0) {
-    return 0; // base case: empty array
+    return 0; 
   }
   const [first, ...rest] = fees;
   return first + sumFeesRecursive(rest);
@@ -314,7 +305,6 @@ export class Library {
     }
   }
 
-  // -- Reporting (reduce-based) --
 
   calculateTotalLateFees() {
     return this.members.reduce((total, member) => total + member.lateFees, 0);
@@ -324,7 +314,7 @@ export class Library {
     if (this.books.length === 0) {
       return undefined;
     }
-    // "Popularity" modeled as copies currently checked out.
+
     return this.books.reduce((mostPopular, current) => {
       const currentCheckedOut = current.totalCopies - current.availableCopies;
       const mostPopularCheckedOut = mostPopular.totalCopies - mostPopular.availableCopies;
@@ -332,7 +322,6 @@ export class Library {
     }, this.books[0]);
   }
 
-  // -- Import / export --
 
   exportLibraryData() {
     const payload = {
