@@ -104,7 +104,6 @@ export class Member {
   }
 
   getMemberInfo() {
-    // Object destructuring straight from `this`.
     const { id, name, email, joinDate, borrowedBooks } = this;
     return `${name} (ID: ${id}, ${email}) — member since ${joinDate.toDateString()}, ${borrowedBooks.length} book(s) borrowed`;
   }
