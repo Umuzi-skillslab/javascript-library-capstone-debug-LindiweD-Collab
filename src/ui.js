@@ -1,11 +1,3 @@
-/**
- * src/ui.js
- *
- * All DOM manipulation and event wiring lives here. This module is the
- * only one allowed to touch `document` — library.js, utils.js, and
- * storage.js stay DOM-free so they can be unit tested without jsdom.
- */
-
 import { Library, Book, Member, PremiumMember, LibraryStats } from './library.js';
 import { debounce, isNonEmptyString } from './utils.js';
 import { saveToLocalStorage, loadFromLocalStorage } from './storage.js';
@@ -24,7 +16,6 @@ export function renderBookCatalogue(books, container) {
     return;
   }
 
-  // Clear before re-rendering so we never duplicate cards.
   container.innerHTML = '';
 
   if (books.length === 0) {
@@ -196,9 +187,7 @@ function handleAddMemberForm(event) {
   }
 }
 
-// Event delegation #1: a single listener on the catalogue container
-// handles clicks on any "Borrow" button, including ones added after
-// the page first loaded.
+
 function handleCatalogueClick(event) {
   const button = event.target.closest('.borrow-btn');
   if (button === null) {
@@ -221,8 +210,7 @@ function handleCatalogueClick(event) {
   refreshAll();
 }
 
-// Event delegation #2: a single listener on the member list handles
-// clicks on any "Remove" button for any member row.
+
 function handleMemberListClick(event) {
   const button = event.target.closest('.remove-member-btn');
   if (button === null) {
@@ -273,39 +261,39 @@ export function initApp() {
   const loadButton = document.querySelector('#load-btn');
   const exportButton = document.querySelector('#export-btn');
 
-  // Listener 1
+  // Listeners
   if (searchInput !== null) {
     searchInput.addEventListener('input', debounce(handleSearchInput, 250));
   }
-  // Listener 2
+
   if (categoryFilter !== null) {
     categoryFilter.addEventListener('change', handleFilterChange);
   }
-  // Listener 3
+
   if (addBookForm !== null) {
     addBookForm.addEventListener('submit', handleAddBookForm);
   }
-  // Listener 4
+
   if (addMemberForm !== null) {
     addMemberForm.addEventListener('submit', handleAddMemberForm);
   }
-  // Listener 5 (delegation)
+
   if (catalogueContainer !== null) {
     catalogueContainer.addEventListener('click', handleCatalogueClick);
   }
-  // Listener 6 (delegation)
+ 
   if (memberListContainer !== null) {
     memberListContainer.addEventListener('click', handleMemberListClick);
   }
-  // Listener 7
+ 
   if (saveButton !== null) {
     saveButton.addEventListener('click', handleSaveClick);
   }
-  // Listener 8
+
   if (loadButton !== null) {
     loadButton.addEventListener('click', handleLoadClick);
   }
-  // Listener 9
+
   if (exportButton !== null) {
     exportButton.addEventListener('click', handleExportClick);
   }
