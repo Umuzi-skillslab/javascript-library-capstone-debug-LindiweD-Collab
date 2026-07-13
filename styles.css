@@ -177,7 +177,42 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
   color: var(--mauve-muted);
   font-weight: 600;
 }
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.65);
+  backdrop-filter: blur(12px);
+
+  color: #3d2b2b;
+  font: inherit;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,0,0,.18);
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+.icon-btn:active {
+  transform: translateY(0);
+}
 .book-catalogue {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
