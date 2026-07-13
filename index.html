@@ -27,12 +27,12 @@
 
   <main class="app-main">
 
-    <!-- ── STATS ── -->
+ 
     <section id="stats-panel" class="stats-panel" aria-label="Library statistics">
-      <!-- Populated by updateStatsDisplay() -->
+    
     </section>
 
-    <!-- ── SEARCH & FILTER ── -->
+  
     <section class="controls">
       <input type="text" id="search-input" placeholder="Search books by title..." aria-label="Search books" />
       <select id="filter-category" aria-label="Filter by category">
@@ -49,7 +49,6 @@
       </label>
     </section>
 
-    <!-- ── CATALOGUE ── -->
     <section class="catalogue-section">
       <h2>Book Catalogue</h2>
       <div id="book-catalogue" class="book-catalogue" aria-live="polite">
@@ -57,7 +56,6 @@
       </div>
     </section>
 
-    <!-- ── ADD BOOK ── -->
     <section class="form-section">
       <h2>Add a Book</h2>
       <form id="add-book-form">
@@ -76,7 +74,6 @@
       </form>
     </section>
 
-    <!-- ── MEMBERS ── -->
     <section class="form-section">
       <h2>Members</h2>
       <form id="add-member-form">
@@ -87,16 +84,46 @@
         <button type="submit">Add Member</button>
       </form>
       <div id="member-list" class="member-list" aria-live="polite">
-        <!-- Populated by renderMemberList() -->
       </div>
     </section>
 
-    <!-- ── DATA TOOLS ── -->
     <section class="data-tools">
       <h2>Data</h2>
-      <button id="save-btn">💾 Save to Browser</button>
-      <button id="load-btn">📂 Load Saved Data</button>
-      <button id="export-btn">⬇️ Export as JSON</button>
+      <button id="save-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4ZM12 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM6 5h9v4H6V5Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Save</span>
+</button>
+
+<button id="load-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3v10m0 0-4-4m4 4 4-4M5 19h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Load</span>
+</button>
+
+<button id="export-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 15V3m0 12-4-4m4 4 4-4M5 19h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Export JSON</span>
+</button>
     </section>
 
   </main>
