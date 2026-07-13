@@ -26,7 +26,6 @@ body {
 
 h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
 
-/* ── HEADER ── */
 .app-header {
   background: linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
   color: var(--plum);
@@ -78,7 +77,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
   color: var(--mauve-muted);
 }
 
-/* Scalloped signature divider between header and content */
 .scallop-divider {
   height: 22px;
   background: var(--cream);
@@ -118,7 +116,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
   font-size: 1rem;
 }
 
-/* Stats */
 .stats-panel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -149,7 +146,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
   font-weight: 600;
 }
 
-/* Controls */
 .controls {
   display: flex;
   gap: 12px;
@@ -182,7 +178,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
   font-weight: 600;
 }
 
-/* Catalogue */
 .book-catalogue {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -235,7 +230,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
 .book-card button:disabled::after { content: ''; }
 .empty-state { color: var(--mauve-muted); font-size: 0.9rem; grid-column: 1 / -1; font-style: italic; text-align: center; padding: 20px; }
 
-/* Forms */
 .form-section {
   background: var(--cream);
   border: 1px solid var(--border);
@@ -280,7 +274,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
 }
 .form-section button:hover { background: #b3922f; }
 
-/* Members */
 .member-list { display: flex; flex-direction: column; gap: 8px; }
 .member-row {
   display: flex;
@@ -306,7 +299,6 @@ h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
 }
 .member-row button:hover { background: var(--red); color: white; }
 
-/* Data tools */
 .data-tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .data-tools button {
   padding: 11px 20px;
