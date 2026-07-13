@@ -1,85 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechBridge Library Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Digital Library System</h1>
-            <nav>
-                <button id="catalogue-tab">Catalogue</button>
-                <button id="members-tab">Members</button>
-                <button id="statistics-tab">Statistics</button>
-            </nav>
-        </header>
-        
-        <main>
-            <section id="catalogue-section">
-                <div class="controls">
-                    <input type="text" id="search" placeholder="Search books...">
-                    <select id="filter-category">
-                        <option value="all">All Categories</option>
-                        <option value="fiction">Fiction</option>
-                        <option value="non-fiction">Non-Fiction</option>
-                        <option value="reference">Reference</option>
-                    </select>
-                </div>
-                
-                <div id="catalogue-list" class="book-grid">
-                    <!-- Books rendered here -->
-                </div>
-                
-                <div id="book-details">
-                    <!-- Selected book details -->
-                </div>
-            </section>
-            
-            <section id="borrow-section">
-                <h2>Borrow a Book</h2>
-                <form id="borrow-form">
-                    <input type="text" id="member-id" placeholder="Member ID" required>
-                    <input type="text" id="isbn" placeholder="ISBN" required>
-                    <button type="submit">Borrow Book</button>
-                </form>
-            </section>
-            
-            <section id="member-section" style="display: none;">
-                <h2>Member Management</h2>
-                <div id="member-form">
-                    <!-- Member form rendered here -->
-                </div>
-                <div id="member-list">
-                    <!-- Members list -->
-                </div>
-            </section>
-            
-            <section id="statistics-section" style="display: none;">
-                <h2>Library Statistics</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Total Books</h3>
-                        <p class="total-books">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Total Members</h3>
-                        <p class="total-members">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Books Borrowed</h3>
-                        <p class="books-borrowed">0</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+
+  <header class="app-header">
+    <div class="header-flourish" aria-hidden="true">
+      <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 C 40 2, 70 2, 100 20 C 130 38, 160 38, 198 20" />
+        <circle cx="100" cy="20" r="3.5" />
+      </svg>
     </div>
+    <p class="header-eyebrow">est. for booklovers</p>
+    <h1><span class="script-word">The</span> TechBridge Library</h1>
+    <p class="header-sub">Search, borrow, and manage the collection ♡</p>
+  </header>
+
+  <div class="scallop-divider" aria-hidden="true"></div>
+
+  <main class="app-main">
+
+ 
+    <section id="stats-panel" class="stats-panel" aria-label="Library statistics">
     
-    <!-- Scripts in wrong order -->
-    <script src="ui.js"></script>
-    <script src="library.js"></script>
-    <!-- Missing: modules setup -->
+    </section>
+
+  
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Search books by title..." aria-label="Search books" />
+      <select id="filter-category" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Science">Science</option>
+        <option value="Technology">Technology</option>
+        <option value="History">History</option>
+      </select>
+      <label class="active-member-label">
+        Active Member ID:
+        <input type="text" id="active-member-id" placeholder="e.g. M001" />
+      </label>
+    </section>
+
+    <section class="catalogue-section">
+      <h2>Book Catalogue</h2>
+      <div id="book-catalogue" class="book-catalogue" aria-live="polite">
+        <!-- Populated by renderBookCatalogue() -->
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>Add a Book</h2>
+      <form id="add-book-form">
+        <input type="text" id="book-isbn" placeholder="ISBN" required />
+        <input type="text" id="book-title" placeholder="Title" required />
+        <input type="text" id="book-author" placeholder="Author" required />
+        <select id="book-category" required>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Science">Science</option>
+          <option value="Technology">Technology</option>
+          <option value="History">History</option>
+        </select>
+        <input type="number" id="book-copies" placeholder="Copies" min="1" value="1" required />
+        <button type="submit">Add Book</button>
+      </form>
+    </section>
+
+    <section class="form-section">
+      <h2>Members</h2>
+      <form id="add-member-form">
+        <input type="text" id="member-id" placeholder="Member ID" required />
+        <input type="text" id="member-name" placeholder="Full Name" required />
+        <input type="email" id="member-email" placeholder="Email" required />
+        <label><input type="checkbox" id="member-premium" /> Premium Member</label>
+        <button type="submit">Add Member</button>
+      </form>
+      <div id="member-list" class="member-list" aria-live="polite">
+      </div>
+    </section>
+
+    <section class="data-tools">
+      <h2>Data</h2>
+      <button id="save-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4ZM12 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM6 5h9v4H6V5Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Save</span>
+</button>
+
+<button id="load-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3v10m0 0-4-4m4 4 4-4M5 19h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Load</span>
+</button>
+
+<button id="export-btn" class="icon-btn">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 15V3m0 12-4-4m4 4 4-4M5 19h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+  <span>Export JSON</span>
+</button>
+    </section>
+
+  </main>
+
+  <script type="module" src="src/ui.js"></script>
 </body>
 </html>
